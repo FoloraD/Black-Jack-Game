@@ -2,8 +2,8 @@
 // Set their values to a random number between 2 - 11
 // 2. Create a variable, sum and set it to the sum of the two cards
 
-let firstCard = 10;
-let secondCard = 4;
+let firstCard = getRandomCard();
+let secondCard = getRandomCard();
 let cards = [firstCard, secondCard]
 let sum = firstCard + secondCard
 let hasBlackJack = false; // keeps track state of the game
@@ -13,6 +13,21 @@ let messageEl = document.getElementById("message-el");
 let sumEl = document.querySelector("#sum-el")
 let cardsEl = document.querySelector("#cards-el")
 //console.log(messageEl)
+
+// function returns random card number 1 - 13
+function getRandomCard(){
+    
+    let randomNumber = Math.floor(Math.random()*13) + 1 // 1-13
+
+    if(randomNumber > 10){ //Jack, Queen, King values
+        return 10
+    } else if (randomNumber === 1){ // Ace card
+        return 11
+    } else {
+        return randomNumber
+    }
+
+}
 
 function startGame() {
     renderGame();
@@ -43,7 +58,7 @@ function renderGame() {
 
 function newCard(){
     console.log('Drawing a new card from the deck!')
-    let card = 7 
+    let card = getRandomCard()
     sum += card
     // push the card to the cards array
     cards.push(card)
