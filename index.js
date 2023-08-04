@@ -13,7 +13,7 @@ let sumEl = document.querySelector("#sum-el")
 let cardsEl = document.querySelector("#cards-el")
 //console.log(messageEl)
 
-function startGame() {
+function renderGame() {
     sumEl.textContent = "Sum: " + sum
     cardsEl.textContent = "Cards: " + firstCard + " " + secondCard
 
@@ -35,7 +35,7 @@ function newCard(){
     console.log('Drawing a new card from the deck!')
     let card = 7 
     sum += card
-    startGame()
+    renderGame()
 }
 
 
