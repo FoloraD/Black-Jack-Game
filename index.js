@@ -8,19 +8,21 @@ let sum = firstCard + secondCard;
 let hasBlackJack = false; // keeps track state of the game
 let isAlive = true; // is the player still in the game
 let message = "";
+let messageEl = document.getElementById("message-el");
+//console.log(messageEl)
 
 function startGame() {
 // 3. conditional logic for game rules.
     if (sum <= 20){
         message = "Do you want to draw a new card? "
     } else if (sum === 21) {
-        message = "Wohoo! You've got Black Jack! "
+        message = "You've got Black Jack! "
         hasBlackJack = true
     } else {
         message = "You're out of the game! "
         isAlive = false
     }
-    console.log(message)
+    messageEl.textContent = message
 }
 
 
