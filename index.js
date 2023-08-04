@@ -4,7 +4,8 @@
 
 let firstCard = 10;
 let secondCard = 4;
-let sum = firstCard + secondCard;
+let cards = [firstCard, secondCard]
+let sum = firstCard + secondCard
 let hasBlackJack = false; // keeps track state of the game
 let isAlive = true; // is the player still in the game
 let message = "";
@@ -19,7 +20,12 @@ function startGame() {
 
 function renderGame() {
     sumEl.textContent = "Sum: " + sum
-    cardsEl.textContent = "Cards: " + firstCard + " " + secondCard
+    cardsEl.textContent = "Cards: "
+
+    for (let i = 0; i < cards.length; i++){
+        cardsEl.textContent += cards[i] + " "
+
+    }
 
 
 // 3. conditional logic for game rules.
@@ -39,6 +45,9 @@ function newCard(){
     console.log('Drawing a new card from the deck!')
     let card = 7 
     sum += card
+    // push the card to the cards array
+    cards.push(card)
+    console.log(cards)
     renderGame()
 }
 
