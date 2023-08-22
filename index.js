@@ -20,9 +20,34 @@ let sumEl = document.querySelector("#sum-el")
 let cardsEl = document.querySelector("#cards-el")
 //console.log(messageEl)
 let playerEl = document.getElementById("player-el")
+//let deck;
 
 playerEl.textContent = player.name + ": £" + player.chips
 
+// build deck
+function buildDeck(){
+    let values = ["A", "2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K"]; 
+    let types = ["C", "D", "H", "S"];
+    deck = []; // array for 52cards in the deck
+
+    for(let i = 0; i < types.length; i++) {
+        for (let j = 0; j < values.length; j++) {
+            deck.push(values[j] + "-" + types[i]); //2-C >>> 2 of clubs
+        }
+    }
+    //console.log(deck)
+}
+
+function shuffleDeck() { // loop through cards in the deck and assign a random index(j) to cards
+    for (let i = 0; i < deck.length; i++) {
+        let j = Math.floor(Math.random() * deck.length); // (0-1)* 52 => (0-51.9999)
+        // we have 2 positions in the deck & we will swap them
+        let temp = deck[i]; 
+        deck[i] = deck[j];
+        deck[j] = temp;
+    }
+     console.log(deck)
+}
 // function returns random card number 1 - 13
 function getRandomCard(){
     
@@ -47,6 +72,8 @@ function startGame() {
     cards = [firstCard, secondCard]
     sum = firstCard + secondCard
     renderGame();
+    buildDeck();
+    shuffleDeck();
 }
 
 function renderGame() {
